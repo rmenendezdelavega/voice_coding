@@ -1,0 +1,163 @@
+**INPUT EXPRESSIONS** (operation_statement)
+
+operation_statement = set_statement | change_statement | if_statement
+
+set_statement = (SET | INITIALIZE) variable_name TO value_statement
+
+                CREATE (THE) VARIABLE variable_name EQUAL TO value_statement
+
+change_statement = CHANGE variable_name BY value_statement
+
+if_statement = IF value_statement THEN operation_statement (ELSE IF operation_statement THEN operation_statement) (ELSE operation_statement)
+
+repeat_loop_statement = REPEAT value_statement TIMES THE OPERATION operation_statement
+
+whileUntil_loop_statement = WHILE | UNTIL value_statement REPEAT THE OPERATION operation_statement
+
+for_loop_statement = COUNT WITH variable_name FROM value_statement TO value_statement BY value_statement AND DO THE OPERATION operation_statement
+
+foreach_loop_statement = FOR EACH ITEM EQUAL TO variable_name IN LIST value_statement DO THE OPERATION operation_statement
+
+flow_statement = BREAK (OUT OF LOOP) | CONTINUE (WITH NEXT ITERATION)
+
+text_append_statement = (APPEND | ADD) TEXT value_statement TO variable_name
+
+text_print_statement = PRINT value_statement
+
+remove_from_list_statement = (REMOVE | ELIMINATE | DELETE) (ordinal_number | RANDOM | LAST) ITEM (FROM START | FROM END) IN value_statement
+
+lists_setIndex_statement = IN LIST value_statement (SET THE | INSERT AT) (ordinal_number | RANDOM | LAST) (ITEM | POSITION) (FROM START | FROM END) (AS | THE VALUE) value_statement
+
+************************************************************************************************
+
+value_statement includes ANY type of value. For better understanding, it is divided in 5 categories:
+
+- boolean_statement
+- number_statement
+- text_statement
+- list_statement
+- colour_statement
+
+BUT the function to determine every type of value is value_statement
+
+************************************************************************************************
+
+boolean_statement = logic_boolean | logic_null | logic_compare | logic_operation | logic_negate | logic_ternary
+
+number_statement = math_number | math_arithmetic | math_single | math_trig | math_constant | math_number_property | math_round | math_on_list | math_modulo | math_constrain | math_random_int | math_random_float
+
+text_statement = text_join | text_length | text_isEmpty | text_indexOf | text_charAt | text_getSubtring | text_changeCase | text_trim | text_count | text_replace | text_reverse | text_prompt_ext
+
+list_statement = lists_create_empty | lists_create_with | lists_repeat | lists_indexOf | lists_getIndex | lists_getSublist | lists_split | lists_reverse | lists_sort
+
+colour_statement = colour_random | colour_rgb
+
+************************************************************************************************
+
+logic_comparator = EQUAL TO | LOWER THAN | LOWER THAN OR EQUAL TO | GREATER THAN | GREATER THAN OR EQUAL TO
+
+logic_operator = AND | OR
+
+math_arithmetic_operator = PLUS | MINUS | TIMES | DIVIDED BY | POWER
+
+math_single_operator = SQUARE ROOT OF | ABSOLUTE VALUE OF | NATURAL LOGARITHM OF | COMMON LOGARITHM OF
+
+math_trig_operator = SINE | COSINE | TANGENT | INVERSE SINE | INVERSE COSINE | INVERSE TANGENT
+
+math_on_list_operator = SUMMATION | MINIMUN | MAXIMUN | AVERAGE | MEDIAN | MODES | STANDARD DEVIATION | RANDOM ITEM
+
+math_property = EVEN | ODD | PRIME | WHOLE | POSITIVE | NEGATIVE | DIVISIBLE BY
+
+*************************************BOOLEAN_STATEMENT******************************************
+
+logic_boolean = TRUE | FALSE
+
+logic_null = NULL
+
+logic_compare = value_statement logic_comparator value_statement
+
+logic_operation = value_statement logic_operator value_statement
+
+logic_negate = NOT value_statement
+
+logic_ternary = TEST value_statement IF TRUE THEN value_statement ELSE value_statement
+
+math_number_property = value_statement IS math_property
+
+*************************************NUMBER_STATEMENT******************************************
+
+math_number = number
+
+math_arithmetic = value_statement math_arithmetic_operator value_statement
+
+math_single = math_single_operator value_statement
+
+math_trig = math_trig_operator value_statement
+
+math_constant = PI | EULER NUMBER | GOLDEN RATIO | INFINITE | INFINITY
+
+math_round = math_round_operator value_statement
+
+math_on_list = math_on_list_operator OF variable_name
+
+math_modulo = REMAINDER OF value_statement DIVIDED BY value_statement
+
+math_constrain = variable_name CONSTRAINED BETWEEN value_statement and value_statement
+
+math_random_int = RANDOM INTEGER FROM value_statement TO value_statement
+
+math_random_float = RANDOM FRACTION
+
+*************************************TEXT_STATEMENT******************************************
+
+text = text
+
+text_join = CREATE TEXT WITH value_statement AND value_statement AND ...
+
+text_length = LENGTH OF value_statement
+
+text_isEmpty = value_statement IS EMPTY
+
+text_indexOf = (FIRST | LAST) OCCURRENCE OF value_statement IN TEXT value_statement
+
+text_charAt = (ordinal_number | RANDOM) LETTER FROM (START | END) IN value_statement
+
+text_getSubtring = SUBSTRING FROM ordinal_number LETTER FROM (START | END) TO ordinal_number LETTER FROM (START | END) IN value_statement
+
+text_changeCase = CHANGE value_statement TO (UPPER | LOWER | TITLE) CASE
+
+text_trim = TRIM SPACES FROM (BOTH | LEFT | RIGHT) SIDES OF value_statement
+
+text_count = COUNT value_statement IN value_statement
+
+text_replace = REPLACE value_statement WITH value_statement IN value_statement
+
+text_reverse = REVERSE TEXT value_statement
+
+text_prompt_ext = PROMPT FOR (TEXT | NUMBER) WITH MESSAGE value_statement
+
+*************************************LIST_STATEMENT******************************************
+
+lists_create_empty = EMPTY LIST
+
+lists_create_with = CREATE LIST WITH value_statement AND value_statement AND ...
+
+lists_repeat = LIST WITH value_statement REPEATED value_statement TIMES
+
+lists_indexOf = (FIND) (FIRST | LAST) OCCURRENCE OF value_statement IN LIST value_statement
+
+lists_getIndex = (GET | GET AND REMOVE) (ordinal_number | RANDOM) ITEM FROM (START | END) IN value_statement
+
+lists_getSublist = (GET SUBLIST | GET A LIST | GET A SUB LIST) FROM ordinal_number ITEM FROM (START | END) TO (ordinal_number | LAST) ITEM FROM (START | END) IN value_statement
+
+lists_split = MAKE A (LIST FROM (THE) TEXT | TEXT FROM (THE) LIST) value_statement WITH DELIMITER value_statement
+
+lists_reverse = REVERSE LIST value_statement
+
+lists_sort = SORT (NUMERICALLY | ALPHABETICALLY) (ASCENDING | DESCENDING) value_statement (IGNORING CASE)
+
+*************************************COLOUR_STATEMENT******************************************
+
+colour_random = RANDOM COLOUR
+
+colour_rgb = COLOUR WITH RED value_statement GREEN value_statement AND BLUE value_statement
